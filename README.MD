@@ -1,93 +1,527 @@
-# Movie Recommender System/Content Based Movie Recommender System
+# 🎬 Movie Recommender System
 
-Movie Recommender System is the python Based Project To Create Content Based Recommender System using TMDB 5000 movie dataset from kaggle
+A **Content-Based Movie Recommender System** built using Python and the **TMDB 5000 Movie Dataset**.
 
-Link: https://u-rex13-movie-recommender-system-app-2ap1dd.streamlit.app/
+The application recommends movies that are similar to the movie selected by the user. The recommendation system uses movie information such as **genres, keywords, cast, crew, and other movie-related features** to identify similar movies.
 
-* * *                             
+The project is deployed using **Streamlit** and provides a simple web interface where users can search for a movie and get recommendations.
 
-### Steps To Run This Project:       
+### 🌐 Live Demo
 
-1) Fisrt Downlod the zip folder of project and unzip the folder 
+[Movie Recommender System – Streamlit App](https://u-rex13-movie-recommender-system-app-2ap1dd.streamlit.app/)
 
-2) Install Python and Visual Studio code using below given link
-   - Python Desktop Application: "https://www.python.org/downloads/"
-   - Visual Studion Code IDE: "https://code.visualstudio.com/download"
+---
 
-3) Open the project folder inside the visual studio code
+## 📌 Project Overview
 
-3) Install the below given libery in command prompt or visual studio code terminal
+The main goal of this project is to understand how a **Content-Based Recommendation System** works and implement it as a working web application.
 
-![image](https://user-images.githubusercontent.com/109918405/192830267-8050f9cb-bfa1-4834-b55f-744d34b4f870.png)
+The overall workflow is:
 
-Below are python libery command before run this project you make sure to run all command in terminal 
-
+```text
+TMDB Movie Dataset
+        ↓
+Data Cleaning & Preprocessing
+        ↓
+Feature Selection
+        ↓
+Combine Movie Features
+        ↓
+Text Vectorization
+        ↓
+Similarity Calculation
+        ↓
+Movie Recommendations
+        ↓
+Streamlit Web Application
 ```
+
+For example, if a user selects **Iron Man**, the system analyzes the movie's features and recommends other movies with similar characteristics.
+
+---
+
+## 🎯 Features
+
+- Search for movies from the available dataset
+- Content-based movie recommendations
+- Uses movie metadata to find similar movies
+- Simple Streamlit user interface
+- Pre-computed recommendation data using pickle files
+- Deployed as a web application
+- Uses TMDB 5000 Movie Dataset
+
+---
+
+## 🧠 What is Content-Based Recommendation?
+
+A **Content-Based Recommendation System** recommends items that are similar to the item selected or previously liked by the user.
+
+Instead of comparing users with other users, it looks at the **features of the items**.
+
+For movies, features can include:
+
+- Genre
+- Keywords
+- Cast
+- Director
+- Movie overview
+- Other movie metadata
+
+For example:
+
+```text
+User selects:
+Iron Man
+
+        ↓
+
+System analyzes:
+Genre
+Keywords
+Cast
+Crew
+Movie information
+
+        ↓
+
+Similarity calculation
+
+        ↓
+
+Recommended Movies:
+Movies with similar features
+```
+
+So, if a user likes a particular movie, the system recommends other movies that have similar content.
+
+---
+
+## 🔍 How the Recommendation System Works
+
+### 1. Dataset
+
+The project uses the **TMDB 5000 Movie Dataset**.
+
+Two datasets are used:
+
+```text
+tmdb_5000_movies.csv
+tmdb_5000_credits.csv
+```
+
+These datasets contain information about movies, including:
+
+- Movie ID
+- Title
+- Genres
+- Keywords
+- Cast
+- Crew
+- Overview
+- Other movie metadata
+
+---
+
+### 2. Data Preprocessing
+
+The datasets are loaded and processed using Python.
+
+The required movie features are selected and combined to create useful information for the recommendation model.
+
+---
+
+### 3. Feature Creation
+
+Important movie features are combined into a single representation.
+
+For example:
+
+```text
+Genres + Keywords + Cast + Crew + Overview
+```
+
+This combined information is then used to determine movie similarity.
+
+---
+
+### 4. Similarity Calculation
+
+The system calculates how similar one movie is to other movies.
+
+Movies with higher similarity scores are considered better recommendations.
+
+The resulting similarity information is stored in:
+
+```text
+similarity.pkl
+```
+
+---
+
+### 5. Recommendation
+
+When the user selects a movie, the application:
+
+```text
+Selected Movie
+      ↓
+Find Movie Index
+      ↓
+Compare Similarity Scores
+      ↓
+Select Most Similar Movies
+      ↓
+Display Recommendations
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+Movie-Recommender-System/
+│
+├── .git/
+├── .gitattributes
+├── .gitignore
+│
+├── app.py
+│
+├── movie-recommender-system.ipynb
+│
+├── movie_dict.pkl
+├── movies.pkl
+├── similarity.pkl
+│
+├── tmdb_5000_credits.csv
+├── tmdb_5000_movies.csv
+│
+├── Procfile
+├── requirements.txt
+├── setup.sh
+│
+└── README.md
+```
+
+---
+
+## 📄 Role of Each File
+
+### `app.py`
+
+The main Python file used to create and run the Streamlit application.
+
+It contains the application interface and recommendation logic used to display movie recommendations.
+
+Run the application using:
+
+```bash
+streamlit run app.py
+```
+
+---
+
+### `movie-recommender-system.ipynb`
+
+Jupyter Notebook used for building the movie recommendation system.
+
+It contains the data processing and model development steps used to prepare the movie data for recommendation.
+
+---
+
+### `movie_dict.pkl`
+
+A serialized Python object containing processed movie information in dictionary format.
+
+It is used by the application to work with the processed movie data.
+
+---
+
+### `movies.pkl`
+
+A processed version of the movie data used by the Streamlit application.
+
+The data is stored in pickle format so that it can be loaded efficiently by the application.
+
+---
+
+### `similarity.pkl`
+
+Contains the pre-computed similarity information between movies.
+
+The Streamlit application uses this information to find movies similar to the movie selected by the user.
+
+---
+
+### `tmdb_5000_movies.csv`
+
+Movie metadata dataset containing information such as:
+
+- Movie ID
+- Title
+- Genres
+- Keywords
+- Overview
+- Other movie details
+
+---
+
+### `tmdb_5000_credits.csv`
+
+Contains credits-related information such as:
+
+- Cast
+- Crew
+- Movie ID
+- Movie title
+
+---
+
+### `.gitignore`
+
+Specifies files and folders that should not be tracked by Git.
+
+---
+
+### `.gitattributes`
+
+Contains Git-related configuration.
+
+In this project, it can also contain configuration related to **Git LFS (Large File Storage)** for tracking large files.
+
+---
+
+### `.git/`
+
+The `.git` directory is automatically created when Git is initialized for a local project.
+
+It contains Git's internal repository information.
+
+> This folder is normally not required to be manually modified.
+
+---
+
+### `Procfile`
+
+A deployment configuration file that specifies the command used to start the application on platforms that support Procfile-based deployment.
+
+---
+
+### `requirements.txt`
+
+Contains the Python libraries required to run the project.
+
+For example:
+
+```text
+streamlit
+pandas
+requests
+pickle-mixin
+```
+
+The exact packages should match the requirements used by the project.
+
+---
+
+### `setup.sh`
+
+A shell script used for deployment configuration.
+
+Its exact requirements depend on the hosting platform and deployment setup.
+
+---
+
+### `README.md`
+
+This file contains information about the project, including:
+
+- Project overview
+- Installation instructions
+- Project structure
+- Recommendation approach
+- Dataset information
+- Usage instructions
+
+It is documentation for the project and is not part of the recommendation model itself.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Scikit-learn**
+- **Streamlit**
+- **Jupyter Notebook**
+- **Pickle**
+- **TMDB 5000 Movie Dataset**
+
+---
+
+## ⚙️ How to Run the Project Locally
+
+### Step 1: Download the Project
+
+Download or clone this repository.
+
+Using Git:
+
+```bash
+git clone https://github.com/laxmankhedkar/Movie-Recommender-System.git
+```
+
+Then open the project folder.
+
+---
+
+### Step 2: Install Python
+
+Make sure Python is installed on your system.
+
+Check the installation:
+
+```bash
+python --version
+```
+
+---
+
+### Step 3: Open the Project
+
+Open the project folder in **Visual Studio Code** or another code editor.
+
+---
+
+### Step 4: Install Required Libraries
+
+Open the terminal inside the project folder and run:
+
+```bash
+pip install -r requirements.txt
+```
+
+You can also install the main packages individually:
+
+```bash
 pip install streamlit
-```
-```
+pip install pandas
+pip install requests
 pip install pickle-mixin
 ```
+
+---
+
+### Step 5: Run the Streamlit Application
+
+Run:
+
+```bash
+streamlit run app.py
 ```
-pip install pandas
+
+Streamlit will start a local server and provide a localhost address, usually similar to:
+
+```text
+http://localhost:8501
 ```
+
+Open the address in your browser.
+
+---
+
+## 🖥️ Using the Application
+
+After launching the application:
+
+1. Open the Streamlit application in your browser.
+2. Select or search for a movie.
+3. Submit the movie selection.
+4. The recommendation system finds similar movies.
+5. Recommended movies are displayed on the screen.
+
+Example:
+
+```text
+Select Movie
+     ↓
+Iron Man
+     ↓
+Get Recommendations
+     ↓
+Similar Movies
 ```
-pip install requests 
-```
-  
-  4)Afte installing the project required python libery we return use termianl to run our project using simple command.
-  ```
-  streamlit run app.py
-  ``` 
-  (meaning of the line is "streamlit" is package name that we are used to create this web app and run meaning to "run" this project using streamlit and "app.py" is the python file that i create the frontend of this project if in any other situation it can different if you create by own using other name so it is differnet name python extension file) 
- 
- 5) after you run this line the streamlit create a localhost in your machine and run this web application using browser
 
-  - This is the localhost that streamlit is host our web application
-![image](https://user-images.githubusercontent.com/109918405/192834944-1e2d0332-d2b3-4fc0-a347-35cd7349b8c3.png)
+---
 
-  - This is user interface that you see after it launch in browser
-![image](https://user-images.githubusercontent.com/109918405/192835386-36aee8e5-c6e7-4e37-b241-04c4adc0b9c2.png)
-  
-  - You can search the movie from list or you can just type the movie name
-![image](https://user-images.githubusercontent.com/109918405/192835852-e81e98d3-b00d-41c2-9259-acb7f974901f.png)
+## 📊 Dataset
 
-  - The Result Screen you get after you search movie and get suggested by movie recommendation model
-![image](https://user-images.githubusercontent.com/109918405/192836167-4f05161b-1e46-4c52-b1b3-48a57bf94ece.png)
+This project uses the **TMDB 5000 Movie Dataset**.
 
-* * *
+Dataset:
 
-### what is role of each file in this or what it contain
+[TMDB 5000 Movie Dataset – Kaggle](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
 
-![image](https://user-images.githubusercontent.com/109918405/193418292-261579f4-3b6e-4801-83d3-b8d0d9aeebea.png)
+You can also explore other datasets on Kaggle:
 
-- **".git"** file it automatically created when we initiative or init github repository to over local project folder.
-- **"git attributes"** file contain some command that help while hosting the project on any web services and in my case ill also use "Git LFS" to uplod some big size data file in same repositery so it also contain that lfs code to track that files.
-- **"git ignore"** file tells Git which files to ignore when committing your project to the GitHub repository.
-- **"app.py"** this file contain the frontend and backend recommendation model implemenation to present in web application using python libery "streamlit"
-- **"movie_dict.pkl"** this pickle file we generated using movie-recommender-system in jupyter system this file contain the dataset that we use in project but in dictonary format but some checking and error solving purposes.
-- **"movie-recommender-system.ipynb"** this this jupyter notebook file in this we created the movie recommendation model and in this we filer the movie dataset that we use for recommendation
-- **"movies.pkl"** it filter data we created to use but strealit doesnt support pandas file so use and refilter this file with other name.
-- **"Procfile"** A Procfile is a mechanism for declaring what commands are run by your application's containers on the Deis platform. It follows the process model. You can use a Procfile to declare various process types, such as multiple types of workers, a singleton process like a clock, or a consumer of the Twitter streaming API
-- **"readme"** it file contain information about our project it didnt use for deployment purpose.
-- **"requirements"** it file we have to generate in terminal using command to get requirements file to know deployment mechnism what we requirement we want and we have 
-- **"setup.sh"** defines Bourne or Korn shell environment variables necessary to build an InfoCrafter database from the command line using the icft command. The setup.sh file sets the TOOLSDIR and TOPLEVEL_BUILDDIR variables. it is use for deployement
-- **"similarity.pkl"** it is file that we convert from pandas to pickle so streamlit can support
-- **"tmdb_5000_credits.csv"** it is movie credits dataset that we have using in this project
-- **"tmdb_5000_movies.csv"** it is also a dataset that contain of movie id,tag,cast,crew,gener etc
-   - we have both dataset file but stil you want to explore other dataset you can checkout kaggle website and i gave you this dataset site also
-      - Kaggle to find other dataset likes or other things also (https://www.kaggle.com/datasets)
-      - TMDB 5000 Movie Dataset that we are using (https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
-             
+[Kaggle Datasets](https://www.kaggle.com/datasets)
 
-* * *
+---
 
-### what is content based recommendation system:
+## 🚀 Live Application
 
--  Content-based filtering uses item features to recommend other items similar to what the user likes, based on their previous actions or explicit feedback.
-- For Example Suppose User1 Like a "Iran Man" movie and rate the movie 4.5 out 5 and similarly the User2 like the same "Iran Man" and give the rating similarily to User1 so they both have equal choice in Sci-Fi movie Genre so basically the machine learning model observe the patent and next time the model suggest the movie or anything other thing according to what we want him to suggest, the model suggest the iteam according the tag system of iteam
-- if you want to know more about content based recommendation system here are some blog that you can read
-   - https://developers.google.com/machine-learning/recommendation/content-based/basics#:~:text=Content%2Dbased%20filtering%20uses%20item,previous%20actions%20or%20explicit%20feedback.
-   - https://www.kdnuggets.com/2020/07/building-content-based-book-recommendation-engine.html
+Try the deployed application:
 
-* * *
+**[Movie Recommender System](https://u-rex13-movie-recommender-system-app-2ap1dd.streamlit.app/)**
+
+The application allows users to select a movie and receive recommendations based on movie similarity.
+
+---
+
+## 🎓 What I Learned From This Project
+
+This project helped me understand and practice:
+
+- Data preprocessing
+- Feature selection
+- Feature engineering
+- Content-based recommendation
+- Text-based similarity
+- Similarity calculation
+- Working with Pandas
+- Saving processed data using Pickle
+- Building a Streamlit application
+- Connecting a machine learning workflow with a web application
+- Deploying a Python-based application
+
+---
+
+## 🔮 Future Improvements
+
+Some possible improvements for this project are:
+
+- Add movie posters using the TMDB API
+- Improve the recommendation algorithm
+- Add more movie features
+- Add user ratings and preferences
+- Build a hybrid recommendation system
+- Improve the Streamlit user interface
+- Add filtering by genre, language, or rating
+- Add personalized recommendations
+
+---
+
+## 👨‍💻 Author
+
+**Laxman Khedkar**
+
+Data Scientist & ML Engineer | Python | SQL | Machine Learning | NLP | LLMs | RAG | Generative AI
+
+GitHub: [@laxmankhedkar](https://github.com/laxmankhedkar)
+
+---
+
+## ⭐ If You Find This Project Useful
+
+If you find this project useful for learning about **Recommendation Systems, Machine Learning, or Streamlit**, consider giving the repository a ⭐.
