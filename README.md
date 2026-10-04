@@ -59,7 +59,7 @@ pip install requests
 
 ### what is role of each file in this or what it contain
 
-![image](https://user-images.githubusercontent.com/109918405/193418292-261579f4-3b6e-4801-83d3-b8d0d9aeebea.png)
+
 
 - **".git"** file it automatically created when we initiative or init github repository to over local project folder.
 - **"git attributes"** file contain some command that help while hosting the project on any web services and in my case ill also use "Git LFS" to uplod some big size data file in same repositery so it also contain that lfs code to track that files.
